@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hckt_epassportModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ePassport" Type="varchar" MaxLength="36" />
+    <Property Name="Nombre" Type="varchar" MaxLength="25" />
+    <Property Name="Apellidos" Type="char" MaxLength="150" />
+    <Property Name="DNI" Type="varchar" MaxLength="15" />
+    <Property Name="Pasaporte" Type="varchar" MaxLength="15" />
+    <Property Name="FechaCreacion" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="vuelos">
+    <Key>
+      <PropertyRef Name="VueloId" />
+    </Key>
+    <Property Name="VueloId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="uint" Nullable="false" />
+    <Property Name="Localizador" Type="varchar" MaxLength="20" />
+    <Property Name="Origen" Type="varchar" MaxLength="150" />
+    <Property Name="Destino" Type="varchar" MaxLength="150" />
+    <Property Name="HoraSalida" Type="datetime" Precision="0" />
+    <Property Name="HoraLlegada" Type="datetime" Precision="0" />
+    <Property Name="OACI" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <Association Name="vuelos_fk1">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="vuelos" Type="Self.vuelos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="vuelos">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="hckt_epassportModelStoreContainer">
+    <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="hckt_epassport" store:Type="Tables" />
+    <EntitySet Name="vuelos" EntityType="Self.vuelos" Schema="hckt_epassport" store:Type="Tables" />
+    <AssociationSet Name="vuelos_fk1" Association="Self.vuelos_fk1">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="vuelos" EntitySet="vuelos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

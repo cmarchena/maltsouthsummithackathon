@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ePassport.MODEL</name>
+    </assembly>
+    <members>
+        <member name="T:ePassport.MODEL.Entities.Usuario">
+            <summary>
+            Usuarios de ePassport
+            </summary>
+        </member>
+        <member name="P:ePassport.MODEL.Entities.Usuario.UsuarioId">
+            <summary>
+            Identificador del elemento
+            </summary>
+        </member>
+    </members>
+</doc>

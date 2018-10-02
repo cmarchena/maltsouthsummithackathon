@@ -1,0 +1,96 @@
+/* SQL Manager Lite for MySQL                              5.7.1.51495 */
+/* ------------------------------------------------------------------- */
+/* Host     : localhost                                                */
+/* Port     : 3306                                                     */
+/* Database : hckt_epassport                                           */
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES 'latin1' */;
+
+SET FOREIGN_KEY_CHECKS=0;
+
+DROP DATABASE IF EXISTS `hckt_epassport`;
+
+CREATE DATABASE `hckt_epassport`
+    CHARACTER SET 'latin1'
+    COLLATE 'latin1_swedish_ci';
+
+USE `hckt_epassport`;
+
+/* Dropping database objects */
+
+DROP VIEW IF EXISTS `getvuelos`;
+DROP VIEW IF EXISTS `getusuarios`;
+DROP TABLE IF EXISTS `vuelos`;
+DROP TABLE IF EXISTS `usuarios`;
+
+/* Structure for the `usuarios` table : */
+
+CREATE TABLE `usuarios` (
+  `UserId` INTEGER(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ePassport` VARCHAR(36) COLLATE latin1_swedish_ci DEFAULT NULL,
+  `Nombre` VARCHAR(25) COLLATE latin1_swedish_ci DEFAULT NULL,
+  `Apellidos` CHAR(150) COLLATE latin1_swedish_ci DEFAULT NULL,
+  `DNI` VARCHAR(15) COLLATE latin1_swedish_ci DEFAULT NULL,
+  `Pasaporte` VARCHAR(15) COLLATE latin1_swedish_ci DEFAULT NULL,
+  `FechaCreacion` TIMESTAMP NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY USING BTREE (`UserId`)
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
+
+/* Structure for the `vuelos` table : */
+
+CREATE TABLE `vuelos` (
+  `VueloId` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `UserId` INTEGER(11) UNSIGNED NOT NULL,
+  `Localizador` VARCHAR(20) COLLATE latin1_swedish_ci DEFAULT NULL,
+  `Origen` VARCHAR(150) COLLATE latin1_swedish_ci DEFAULT NULL,
+  `Destino` VARCHAR(150) COLLATE latin1_swedish_ci DEFAULT NULL,
+  `HoraSalida` DATETIME DEFAULT NULL,
+  `HoraLlegada` DATETIME DEFAULT NULL,
+  `OACI` VARCHAR(5) COLLATE latin1_swedish_ci DEFAULT NULL,
+  PRIMARY KEY USING BTREE (`VueloId`),
+  KEY `vuelos_fk1` USING BTREE (`UserId`),
+  CONSTRAINT `vuelos_fk1` FOREIGN KEY (`UserId`) REFERENCES `usuarios` (`UserId`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
+
+/* Definition for the `getusuarios` view : */
+
+CREATE ALGORITHM=UNDEFINED DEFINER='root'@'localhost' SQL SECURITY DEFINER VIEW `getusuarios`
+AS
+select
+  `usuarios`.`UserId` AS `UserId`,
+  `usuarios`.`ePassport` AS `ePassport`,
+  `usuarios`.`Nombre` AS `Nombre`,
+  `usuarios`.`Apellidos` AS `Apellidos`,
+  `usuarios`.`DNI` AS `DNI`,
+  `usuarios`.`Pasaporte` AS `Pasaporte`,
+  `usuarios`.`FechaCreacion` AS `FechaCreacion`
+from
+  `usuarios`;
+
+/* Definition for the `getvuelos` view : */
+
+CREATE ALGORITHM=UNDEFINED DEFINER='root'@'localhost' SQL SECURITY DEFINER VIEW `getvuelos`
+AS
+select
+  `vuelos`.`VueloId` AS `VueloId`,
+  `vuelos`.`UserId` AS `UserId`,
+  `vuelos`.`Localizador` AS `Localizador`,
+  `vuelos`.`Origen` AS `Origen`,
+  `vuelos`.`Destino` AS `Destino`,
+  `vuelos`.`HoraSalida` AS `HoraSalida`,
+  `vuelos`.`HoraLlegada` AS `HoraLlegada`,
+  `vuelos`.`OACI` AS `OACI`
+from
+  `vuelos`;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

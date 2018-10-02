@@ -1,0 +1,5 @@
+//En este fichero estableceremos las Audiencias que pueden conectar con el API
+//El formato es el siguiente:
+//Nombre,AudienceId,Secreto,Dias hasta su expiración [0=no expira]
+
+HCKT,6c276798-777f-4410-adb9-7d68cce10930,db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==,0

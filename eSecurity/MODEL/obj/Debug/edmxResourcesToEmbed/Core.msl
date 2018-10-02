@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="securityModelStoreContainer" CdmEntityContainer="securityEntities">
+    <EntitySetMapping Name="audiences">
+      <EntityTypeMapping TypeName="securityModel.audience">
+        <MappingFragment StoreEntitySet="audiences">
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="DaysToExpire" ColumnName="DaysToExpire" />
+          <ScalarProperty Name="AudienceId" ColumnName="AudienceId" />
+          <ScalarProperty Name="InternalId" ColumnName="InternalId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Secret" ColumnName="Secret" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+          <ScalarProperty Name="IsInternal" ColumnName="IsInternal" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

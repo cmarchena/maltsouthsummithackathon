@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="securityModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="audiences">
+    <Key>
+      <PropertyRef Name="AudienceId" />
+    </Key>
+    <Property Name="AudienceId" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="InternalId" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="128" />
+    <Property Name="Secret" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="DaysToExpire" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="ModificationDate" Type="datetime" Precision="0" />
+    <Property Name="IsInternal" Type="bool" Nullable="false" />
+    <Property Name="IsActive" Type="bool" Nullable="false" />
+    <Property Name="ExpirationDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityContainer Name="securityModelStoreContainer">
+    <EntitySet Name="audiences" EntityType="Self.audiences" Schema="cms_security" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,9 @@
+﻿//En este fichero pondremos los roles que queremos dar de alta para comenzar a usar el API
+//Cuando al Rol le precede un * el Rol creado será marcado como Interno
+
+*Administrador
+*Manager
+*All
+Registrador
+ePassport
+eCommerce

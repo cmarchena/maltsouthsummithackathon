@@ -1,0 +1,17 @@
+﻿-- Aquí incluiremos los scripts necesarios para usar el API, como algunas vistas
+
+CREATE VIEW `getaudiences`
+AS
+select
+  `audiences`.`AudienceId` AS `AudienceId`,
+  `audiences`.`InternalId` AS `InternalId`,
+  `audiences`.`Name` AS `Name`,
+  `audiences`.`Secret` AS `Secret`,
+  `audiences`.`DaysToExpire` AS `DaysToExpire`,
+  `audiences`.`CreationDate` AS `CreationDate`,
+  `audiences`.`ModificationDate` AS `ModificationDate`,
+  `audiences`.`ExpirationDate` AS `ExpirationDate`,
+  `audiences`.`IsInternal` AS `IsInternal`,
+  `audiences`.`IsActive` AS `IsActive`
+from
+  `audiences`;

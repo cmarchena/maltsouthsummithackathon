@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ePassport.CORE</name>
+    </assembly>
+    <members>
+        <member name="T:ePassport.CORE.Entities.Usuarios">
+            <summary>
+            Gestión de la entidad Usuarios ePassport
+            </summary>
+        </member>
+        <member name="T:ePassport.CORE.Entities.Base">
+            <summary>
+            Clase Base para las entidades
+            </summary>
+        </member>
+        <member name="M:ePassport.CORE.Globals.Queries.GeneraQuery(System.String)">
+            <summary>
+            Genera la consulta reemplazando los comodines utilizados en el QueryString["q"]
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ePassport.CORE.Globals.Queries.GeneraEquivalencias(System.String,System.String,System.Char)">
+            <summary>
+            Sincroniza los nombres de campo de los objetos Dummies con la consulta en base de datos
+            </summary>
+            <param name="query"></param>
+            <param name="fieldEquivalents">usuario=username,nombre=name</param>
+            <returns></returns>
+        </member>
+        <member name="M:ePassport.CORE.Globals.Queries.GeneraCountSql(System.String,System.String,System.String)">
+            <summary>
+            Genera la consulta para el count de los elementos devueltos para poder paginar correctamente
+            </summary>
+            <param name="sql"></param>
+            <param name="query"></param>
+            <param name="fieldEquivalents"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ePassport.CORE.Globals.Queries.GeneraSql(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Genera la consulta que se enviará a la base de datos después de aplicarle las correcciones necesarias
+            </summary>
+            <param name="sql"></param>
+            <param name="query"></param>
+            <param name="sort"></param>
+            <param name="limit"></param>
+            <param name="offset"></param>
+            <param name="fieldEquivalents"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ePassport.CORE.Globals.Model.IsValid(System.Object)">
+            <summary>
+            Verifica que los datos del modelo es válido
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ePassport.CORE.Globals.Model.ValidationResults(System.Collections.Generic.List{System.ComponentModel.DataAnnotations.ValidationResult})">
+            <summary>
+            Devuelve los errores de validación del modelo
+            </summary>
+            <param name="results"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ePassport.CORE.Globals.Model.ManageException(System.Data.Entity.DbContextTransaction,System.Data.Entity.Validation.DbEntityValidationException)">
+            <summary>
+            Maneja la transacción en curso cuando hay problemas de validación en la entidad
+            </summary>
+            <param name="transaction"></param>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ePassport.CORE.Interfaces.IBase">
+            <summary>
+            Define el Interface para la gestión de Areas
+            </summary>
+        </member>
+        <member name="M:ePassport.CORE.Interfaces.IBase.Count">
+            <summary>
+            Devuelve el recuento de la consulta para realizar las paginaciones
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ePassport.CORE.Interfaces.IUsuarios">
+            <summary>
+            Define el Interface para la gestión de Usuarios
+            </summary>
+        </member>
+        <member name="M:ePassport.CORE.Interfaces.IUsuarios.Get(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Devuelve <see cref="T:System.Collections.Generic.List`1"/> que coincidan con la query.
+            </summary>
+            <param name="query">campo eq:'string' or campo eq:numero and campo ct:'*contiene*' or campo ct:'comienza*' or campo eq!'diferente'</param>
+            <param name="sort">campo1 asc, campo2 desc, campo3 asc</param>
+            <param name="limit">Limita el número de filas devueltas</param>
+            <param name="offset">Página</param>
+            <param name="filter">Filtro predeterminado de la consulta</param>
+            <returns><see cref="T:System.Collections.Generic.List`1"/></returns>
+            <remarks>Está preparada para paginación</remarks>
+        </member>
+        <member name="M:ePassport.CORE.Interfaces.IUsuarios.Get(System.Guid)">
+            <summary>
+            Devuelve <see cref="T:ePassport.MODEL.Entities.Usuario"/> cuyo internalId coincida
+            </summary>
+            <param name="internalId">Key</param>
+            <returns><see cref="T:ePassport.MODEL.Entities.Usuario"/></returns>
+        </member>
+        <member name="M:ePassport.CORE.Interfaces.IUsuarios.Post(ePassport.MODEL.Entities.Usuario)">
+            <summary>
+            Crea un <see cref="T:ePassport.MODEL.Entities.Usuario"/>
+            </summary>
+            <param name="model"><see cref="T:System.Collections.Generic.List`1"/></param>
+            <returns><see cref="T:ePassport.MODEL.Entities.Usuario"/></returns>
+        </member>
+        <member name="M:ePassport.CORE.Interfaces.IUsuarios.Put(ePassport.MODEL.Entities.Usuario)">
+            <summary>
+            Actualiza un <see cref="T:ePassport.MODEL.Entities.Usuario"/>
+            </summary>
+            <param name="model"></param>
+            <returns><see cref="T:System.Collections.Generic.List`1"/></returns>
+        </member>
+        <member name="M:ePassport.CORE.Interfaces.IUsuarios.Delete(System.Guid)">
+            <summary>
+            Elimina una <see cref="T:ePassport.MODEL.Entities.Usuario"/>
+            </summary>
+            <param name="internalId"></param>
+            <returns><see cref="T:System.Collections.Generic.List`1"/></returns>
+        </member>
+    </members>
+</doc>

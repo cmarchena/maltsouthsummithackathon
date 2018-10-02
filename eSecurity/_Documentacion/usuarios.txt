@@ -1,0 +1,9 @@
+﻿// Con este fichero podremos cargar los usuarios que necesitamos de entrada para comenzar a usar el API
+// El formato de cada fila es el siguiente:
+// AudienceId#Nombre,Appellidos,email#Usuario|Password#Rol1,Rol2,Rol3
+// Cuando al Usuario le precede un * el Usuario creado será marcado como Interno
+
+6c276798-777f-4410-adb9-7d68cce10930#Santiago,Lobo Novella,santiago.lobo@lobobrothers.com#*Administrador|Administrador#Administrador,Manager,All
+6c276798-777f-4410-adb9-7d68cce10930#Entidad,Registradora,santiago.lobo@lobobrothers.com#Registrador|Registrador#Registrador
+6c276798-777f-4410-adb9-7d68cce10930#Entidad,Comercializadora,santiago.lobo@lobobrothers.com#eCommerce|eCommerce#eCommerce
+6c276798-777f-4410-adb9-7d68cce10930#Usuario,ePassport,santiago.lobo@lobobrothers.com#ePassport|ePassport#ePassport

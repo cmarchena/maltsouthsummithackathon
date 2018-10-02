@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ePassport.API</name>
+    </assembly>
+    <members>
+        <member name="T:ePassport.API.TokenConsumptionConfig">
+            <summary>
+            Clase que maneja el consumo de tokens JWT de seguridad
+            </summary>
+        </member>
+        <member name="T:ePassport.API.DependencyConfig">
+            <summary>
+            Clase que maneja el registro de dependencias a través de un contenedor de Unity
+            </summary>
+        </member>
+        <member name="M:ePassport.API.Controllers.AuthController.Token(System.String,System.String,System.String,System.String)">
+            <summary>
+            Autoriza al usuario a utilizar el API con sus credenciales y permisos
+            </summary>
+            <param name="username">Nombre Usuario</param>
+            <param name="password">Password</param>
+            <param name="audienceId">Id Cliente</param>
+            <param name="grantType">Tipo de permiso</param>
+            <returns></returns>
+        </member>
+        <member name="M:ePassport.API.Controllers.AuthController.RefreshToken(System.String,System.String,System.String)">
+            <summary>
+            Autoriza al usuario a utilizar el API con sus credenciales y permisos
+            </summary>
+            <param name="username">Nombre Usuario</param>
+            <param name="refresh_token">Token de refresco</param>
+            <param name="grantType">Tipo de permiso</param>
+            <returns></returns>
+        </member>
+        <member name="T:ePassport.API.Controllers.UsuariosController">
+            <summary>
+            Usuarios ePassport
+            </summary>
+        </member>
+        <member name="M:ePassport.API.Controllers.UsuariosController.Get">
+            <summary>
+            Devuelve los usuarios que cumplan con la consulta
+            </summary>
+            <remarks>
+            <p>Devuelve un Json con los usuarios en <b>results</b> y la gestión de la paginación en <b>metadata</b>.</p>
+            <br/>
+            <p><b>GET </b> /es-ES/api/v1.0/usuarios?q=ePassport+ct:'*ePassport*'&amp;sort=nombre+asc,direccion+desc&amp;limit=25&amp;offset=1</p>
+            <br/>
+            <p><b>Query String Params</b></p>
+            <ul>
+            <li><b><u>q (Query):</u> </b> En este parámetro podemos definir con algunos metas que filas queremos que nos devuelva el servicio definiendo patrones de búsqueda o comparación.
+                <ul>
+                    <li><b>ct (Contains):</b> q=Campo1 ct:'comienza por\*' AND Campo2 ct:'\*finaliza por' OR Campo3 ct:'\*contiene\*'</li>
+                    <li><b>eq: (Equals):</b> q=Campo1 eq:'texto' AND Campo2 eq:0</li>
+                    <li><b>eq! (Not Equals):</b> q=Campo1 eq!'texto' AND Campo2 eq!0</li>
+                    <li><b>&lt;: (Lower than):</b> q=Campo1 &lt;: 1</li>
+                    <li><b>&gt;: (Greater than):</b> q=Campo1 &gt;: 1</li>
+                </ul>
+            </li>
+            <li><b><u>sort (Ordenación):</u> </b> Definimos como queremos ordenar los resultados. <br/> sort=Campo1 asc,Campo2 desc</li>
+            <li><b><u>limit (Límite filas devueltas):</u> </b> Límite para la paginación. Estableciendo este límite, la paginación se realiza de forma automática. El servicio nos devolverá los enlaces de las páginas <b>self</b>, <b>previous</b>, <b>next</b><br/>limit=25</li>
+            <li><b><u>offset (Página):</u> </b> Página actual.<br/>offset=1</li>
+            </ul>
+            </remarks> 
+            <response code="200">Response Ok</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+            <returns>Json con </returns>
+        </member>
+        <member name="M:ePassport.API.Controllers.UsuariosController.Get(System.Guid)">
+            <summary>
+            Devuelve un área por su identificador
+            </summary>
+            <param name="ePassport">ePassport</param>
+            <response code="200">Response Ok</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+            <returns></returns>
+        </member>
+        <member name="M:ePassport.API.Controllers.UsuariosController.Post(ePassport.MODEL.Entities.Usuario)">
+            <summary>
+            Crea un nuevo usuario de ePassport
+            </summary>
+            <param name="model"></param>
+            <response code="200">Response Ok</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+            <returns></returns>
+        </member>
+        <member name="M:ePassport.API.Controllers.UsuariosController.Put(ePassport.MODEL.Entities.Usuario)">
+            <summary>
+            Actualiza el Usuario
+            </summary>
+            <param name="model"></param>
+            <response code="200">Response Ok</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+            <returns></returns>
+        </member>
+        <member name="M:ePassport.API.Controllers.UsuariosController.Delete(System.Guid)">
+            <summary>
+            Elimina el Usuario por su ePassport
+            </summary>
+            <param name="ePassport"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ePassport.API.Globals.Utilities.ClientHttp">
+            <summary>
+            Cliente Http
+            </summary>
+        </member>
+        <member name="T:ePassport.API.Globals.Response">
+            <summary>
+            Devuelve el estado de la respuesta HTTP
+            </summary>
+        </member>
+        <member name="T:ePassport.API.Globals.Metadata">
+            <summary>
+            Gestiona la paginación de los elementos de la consulta
+            </summary>
+        </member>
+        <member name="T:ePassport.API.Globals.Security.AuthorizationAttribute">
+            <summary>
+            Atributo para poder gestionar la seguridad de las acciones respecto a appsettings del web.config
+            TODO:Estas settings habría que pasarlas a bbdd por ejemplo a la tabla de configuraciones
+            </summary>
+        </member>
+        <member name="M:ePassport.API.Globals.Security.AuthorizationAttribute.SetPrincipal(System.String)">
+            <summary>
+            Crea la Identidad desde el token, si pasa la seguridad
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ePassport.API.Globals.Security.AuthorizationAttribute.OnAuthorization(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            Proceso de autorización
+            </summary>
+            <param name="actionContext"></param>
+        </member>
+    </members>
+</doc>

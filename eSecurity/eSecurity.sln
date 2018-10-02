@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MODEL", "MODEL\MODEL.csproj", "{B19EE1AE-19DD-4273-B69F-AB0D0CD9C609}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CORE", "CORE\CORE.csproj", "{52E331E9-D1E3-4B24-A43F-A0C99A58142D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESOURCES", "RESOURCES\RESOURCES.csproj", "{A914537E-5503-411F-A348-4ACA01415B31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TESTING", "TESTING\TESTING.csproj", "{C22A6E6A-6E01-4D13-881D-5EA542814AB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{5ECCE93D-0519-4C0F-A184-1C8853677619}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Recursos", "Recursos", "{20D3C44F-BC30-4C2B-91C4-7859F8E033EB}"
+	ProjectSection(SolutionItems) = preProject
+		_Documentacion\audiences.txt = _Documentacion\audiences.txt
+		_Documentacion\roles.txt = _Documentacion\roles.txt
+		_Documentacion\scripts.txt = _Documentacion\scripts.txt
+		_Documentacion\usuarios.txt = _Documentacion\usuarios.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B19EE1AE-19DD-4273-B69F-AB0D0CD9C609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B19EE1AE-19DD-4273-B69F-AB0D0CD9C609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B19EE1AE-19DD-4273-B69F-AB0D0CD9C609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B19EE1AE-19DD-4273-B69F-AB0D0CD9C609}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52E331E9-D1E3-4B24-A43F-A0C99A58142D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52E331E9-D1E3-4B24-A43F-A0C99A58142D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52E331E9-D1E3-4B24-A43F-A0C99A58142D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52E331E9-D1E3-4B24-A43F-A0C99A58142D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A914537E-5503-411F-A348-4ACA01415B31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A914537E-5503-411F-A348-4ACA01415B31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A914537E-5503-411F-A348-4ACA01415B31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A914537E-5503-411F-A348-4ACA01415B31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C22A6E6A-6E01-4D13-881D-5EA542814AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C22A6E6A-6E01-4D13-881D-5EA542814AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C22A6E6A-6E01-4D13-881D-5EA542814AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C22A6E6A-6E01-4D13-881D-5EA542814AB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ECCE93D-0519-4C0F-A184-1C8853677619}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ECCE93D-0519-4C0F-A184-1C8853677619}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ECCE93D-0519-4C0F-A184-1C8853677619}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ECCE93D-0519-4C0F-A184-1C8853677619}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ED3B5377-D0D9-4E75-B877-DA75A20B6B27}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SECURITY.API</name>
+    </assembly>
+    <members>
+        <member name="T:SECURITY.API.DependencyConfig">
+            <summary>
+            Clase que maneja el registro de dependencias a través de un contenedor de Unity
+            </summary>
+        </member>
+        <member name="T:SECURITY.API.ContextGenerationConfig">
+            <summary>
+            Clase que maneja la generación de los contextos
+            </summary>
+        </member>
+        <member name="T:SECURITY.API.Controllers.AudiencesController">
+            <summary>
+            Controller encargado de gestionar las Audiencias del API
+            </summary>
+        </member>
+        <member name="M:SECURITY.API.Controllers.AudiencesController.Get">
+            <summary>
+            Devuelve las Audiencias que cumplan con la consulta
+            </summary>
+            <remarks>
+            <p>Devuelve un Json con las áreas en <b>results</b> y la gestión de la paginación en <b>metadata</b>.</p>
+            <br/>
+            <p><b>GET </b> /es-ES/api/v1.0/audiences?q=nombre+ct:'*nombre*'&amp;sort=nombre+asc,direccion+desc&amp;limit=25&amp;offset=1</p>
+            <br/>
+            <p><b>Query String Params</b></p>
+            <ul>
+            <li><b><u>q (Query):</u> </b> En este parámetro podemos definir con algunos metas que filas queremos que nos devuelva el servicio definiendo patrones de búsqueda o comparación.
+                <ul>
+                    <li><b>ct (Contains):</b> q=Campo1 ct:'comienza por\*' AND Campo2 ct:'\*finaliza por' OR Campo3 ct:'\*contiene\*'</li>
+                    <li><b>eq: (Equals):</b> q=Campo1 eq:'texto' AND Campo2 eq:0</li>
+                    <li><b>eq! (Not Equals):</b> q=Campo1 eq!'texto' AND Campo2 eq!0</li>
+                    <li><b>&lt;: (Lower than):</b> q=Campo1 &lt;: 1</li>
+                    <li><b>&gt;: (Greater than):</b> q=Campo1 &gt;: 1</li>
+                </ul>
+            </li>
+            <li><b><u>sort (Ordenación):</u> </b> Definimos como queremos ordenar los resultados. <br/> sort=Campo1 asc,Campo2 desc</li>
+            <li><b><u>limit (Límite filas devueltas):</u> </b> Límite para la paginación. Estableciendo este límite, la paginación se realiza de forma automática. El servicio nos devolverá los enlaces de las páginas <b>self</b>, <b>previous</b>, <b>next</b><br/>limit=25</li>
+            <li><b><u>offset (Página):</u> </b> Página actual.<br/>offset=1</li>
+            </ul>
+            </remarks> 
+            <response code="200">Response Ok</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+            <returns>Json con </returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.AudiencesController.Get(System.Guid)">
+            <summary>
+            Devuelve una Audiencia por su identificador
+            </summary>
+            <param name="audienceId">Identificador del área</param>
+            <response code="200">Response Ok</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.AudiencesController.Post(SECURITY.MODEL.Entities.Audience)">
+            <summary>
+            Crea una nueva Audiencia
+            </summary>
+            <param name="model"></param>
+            <response code="200">Response Ok</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.AudiencesController.Put(SECURITY.MODEL.Entities.Audience)">
+            <summary>
+            Actualiza la Audiencia
+            </summary>
+            <param name="model"></param>
+            <response code="200">Response Ok</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.AudiencesController.Delete(System.Guid)">
+            <summary>
+            Elimina la Audiencia por su identificador
+            </summary>
+            <param name="audienceId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SECURITY.API.Controllers.RolesController">
+            <summary>
+            Controlador encargado de gestionar los Roles
+            </summary>
+        </member>
+        <member name="M:SECURITY.API.Controllers.RolesController.Get(System.Guid)">
+            <summary>
+            Devuelve un rol por su Identificador
+            </summary>
+            <param name="roleId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.RolesController.Post(SECURITY.MODEL.Entities.Role)">
+            <summary>
+            Crea un Rol
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.RolesController.GetUsersInRole(System.String)">
+            <summary>
+            Devuelve una lista de usuarios que contengan el rol
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.RolesController.IsInRole(System.String,System.String)">
+            <summary>
+            Devuelve true si el usuario pertenece al rol indicado
+            </summary>
+            <param name="userName"></param>
+            <param name="roleName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SECURITY.API.Controllers.SigninController">
+            <summary>
+            Controlador encargado de gestionar los Signin
+            </summary>
+        </member>
+        <member name="M:SECURITY.API.Controllers.SigninController.Login(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Login
+            </summary>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <param name="isPersistent"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SECURITY.API.Controllers.UsersController">
+            <summary>
+            Controlador encargado de gestionar a los Usuarios
+            </summary>
+        </member>
+        <member name="M:SECURITY.API.Controllers.UsersController.Get(System.Guid)">
+            <summary>
+            Devuelve un usuario por su Identificador Interno de usuario
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.UsersController.Post(SECURITY.MODEL.Entities.User,System.String)">
+            <summary>
+            Crea al usuario
+            </summary>
+            <param name="model"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.UsersController.Put(SECURITY.MODEL.Entities.User)">
+            <summary>
+            Actualiza al usuario
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.UsersController.Delete(System.Guid)">
+            <summary>
+            Elimina al usuario
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.UsersController.ChangePassword(System.Guid,System.String,System.String)">
+            <summary>
+            Cambia la password del usuario
+            </summary>
+            <param name="userId"></param>
+            <param name="currentPassword"></param>
+            <param name="newPassword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.UsersController.CheckPassword(System.String,System.String)">
+            <summary>
+            Verifica la password del usuario
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.UsersController.IsInRole(System.String,System.String)">
+            <summary>
+            Devuelve true si el usuario pertenece al rol
+            </summary>
+            <param name="userName"></param>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.UsersController.GetRoles(System.String)">
+            <summary>
+            Devuelve todos los roles del usuario
+            </summary>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.UsersController.AddToRole(System.String,System.String)">
+            <summary>
+            Añade al usuario al rol
+            </summary>
+            <param name="userName"></param>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.UsersController.AddToRoles(System.String,System.String)">
+            <summary>
+            Añade al usuario a los roles delimitados por comas
+            </summary>
+            <param name="userName">NombreUsuario</param>
+            <param name="roles">Rol1,Rol2,Rol3</param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.UsersController.RemoveFromRole(System.String,System.String)">
+            <summary>
+            Quita al usuario del rol
+            </summary>
+            <param name="userName"></param>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.UsersController.RemoveFromRoles(System.String,System.String)">
+            <summary>
+            Quita al usuario a los roles delimitados por comas
+            </summary>
+            <param name="userName">NombreUsuario</param>
+            <param name="roles">Rol1,Rol2,Rol3</param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Controllers.UsersController.GetRefreshToken(System.String,System.String)">
+            <summary>
+            Obtiene el token de refresco
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SECURITY.API.Globals.Response">
+            <summary>
+            Devuelve el estado de la respuesta HTTP
+            </summary>
+        </member>
+        <member name="T:SECURITY.API.Globals.Metadata">
+            <summary>
+            Gestiona la paginación de los elementos de la consulta
+            </summary>
+        </member>
+        <member name="T:SECURITY.API.Globals.Identity.RoleManager">
+            <summary>
+            Gestiona los roles
+            </summary>
+        </member>
+        <member name="T:SECURITY.API.Globals.Identity.UserManager">
+            <summary>
+            Gestiona los usuarios
+            </summary>
+        </member>
+        <member name="T:SECURITY.API.Globals.Identity.SignInManager">
+            <summary>
+            Gestiona los inicios de sesión
+            </summary>
+        </member>
+        <member name="T:SECURITY.API.Globals.Identity.AccessTokenFormat">
+            <summary>
+            Genera el token de seguridad
+            </summary>
+        </member>
+        <member name="M:SECURITY.API.Globals.Identity.AccessTokenFormat.Protect(Microsoft.Owin.Security.AuthenticationTicket)">
+            <summary>
+            Transforms the specified authentication ticket into a JWT.
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Globals.Identity.AccessTokenFormat.Unprotect(System.String)">
+            <summary>
+            Validates the specified JWT and builds an AuthenticationTicket from it.
+            </summary>
+            <param name="protectedText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Globals.Identity.Providers.OAuthProvider.GrantResourceOwnerCredentials(Microsoft.Owin.Security.OAuth.OAuthGrantResourceOwnerCredentialsContext)">
+            <summary>
+            Called when a request to the Token endpoint arrives with a "grant_type" of "password". 
+            This occurs when the user has provided name and password credentials directly into the client application's user interface,
+            and the client application is using those to acquire an "access_token" and optional "refresh_token". If the web application 
+            supports the resource owner credentials grant type it must validate the context.Username and context.Password as appropriate. 
+            To issue an access token the context.Validated must be called with a new ticket containing the claims about the resource owner 
+            which should be associated with the access token. The application should take appropriate measures to ensure that the endpoint isn’t 
+            abused by malicious callers. The default behavior is to reject this grant type. See also http://tools.ietf.org/html/rfc6749#section-4.3.2
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Globals.Identity.Providers.OAuthProvider.TokenEndpointResponse(Microsoft.Owin.Security.OAuth.OAuthTokenEndpointResponseContext)">
+            <summary>
+            Called before the TokenEndpoint redirects its response to the caller
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SECURITY.API.Globals.Security.Token">
+            <summary>
+            Genera el token de seguridad
+            </summary>
+        </member>
+        <member name="T:SECURITY.API.Globals.Security.AuthorizationAttribute">
+            <summary>
+            Atributo para poder gestionar la seguridad de las acciones respecto a appsettings del web.config
+            TODO:Estas settings habría que pasarlas a bbdd por ejemplo a la tabla de configuraciones
+            </summary>
+        </member>
+        <member name="M:SECURITY.API.Globals.Security.AuthorizationAttribute.SetPrincipal(System.String)">
+            <summary>
+            Crea la Identidad desde el token, si pasa la seguridad
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.API.Globals.Security.AuthorizationAttribute.OnAuthorization(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            Proceso de autorización
+            </summary>
+            <param name="actionContext"></param>
+        </member>
+    </members>
+</doc>

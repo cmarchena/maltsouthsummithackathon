@@ -1,0 +1,331 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SECURITY.CORE</name>
+    </assembly>
+    <members>
+        <member name="T:SECURITY.CORE.Entities.Audiences">
+            <summary>
+            Implementación del Interface IIdiomas
+            </summary>
+        </member>
+        <member name="M:SECURITY.CORE.Entities.Audiences.Update(SECURITY.MODEL.audience,SECURITY.MODEL.Entities.Audience)">
+            <summary>
+            Actualiza los datos anejos del objeto o añade uno nuevo si no existiese
+            </summary>
+            <param name="dbModel">pais</param>
+            <param name="model">modelo</param>
+        </member>
+        <member name="M:SECURITY.CORE.Entities.Audiences.Listado(System.Collections.Generic.List{SECURITY.MODEL.audience})">
+            <summary>
+            Genera la lista de objetos maniqui para devolver la estructura que queramos,
+            en este caso es una entidad simple pero si este objeto tuviese propiedades complejas las rellenaríamos desde aquí.
+            Ej: el objeto que tratamos aquí es de tipo Audience, pues podemos rellenar el listado de imagenes por ejemplo
+            </summary>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SECURITY.CORE.Entities.Base">
+            <summary>
+            Clase Base para las entidades
+            </summary>
+        </member>
+        <member name="M:SECURITY.CORE.Entities.Users.IsInRole(System.String,System.String)">
+            <summary>
+            Devuelve true si el usuario contiene el rol
+            </summary>
+            <param name="userName">NombreUsuario</param>
+            <param name="role">Rol1</param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.CORE.Entities.Users.GetRoles(System.String)">
+            <summary>
+            Devuelve los roles del usuario
+            </summary>
+            <param name="userName">NombreUsuario</param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.CORE.Entities.Users.AddToRole(System.String,System.String)">
+            <summary>
+            Añade al usuario al rol
+            </summary>
+            <param name="userName">NombreUsuario</param>
+            <param name="role">Rol1</param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.CORE.Entities.Users.AddToRoles(System.String,System.String)">
+            <summary>
+            Añade al usuario a la lista de roles separados por comas
+            </summary>
+            <param name="userName">NombreUsuario</param>
+            <param name="roles">Rol1,Rol2,Rol3</param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.CORE.Globals.DbContext.Create">
+            <summary>
+            Crea el contexto
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.CORE.Globals.Queries.GeneraQuery(System.String)">
+            <summary>
+            Genera la consulta reemplazando los comodines utilizados en el QueryString["q"]
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.CORE.Globals.Queries.GeneraEquivalencias(System.String,System.String,System.Char)">
+            <summary>
+            Sincroniza los nombres de campo de los objetos Dummies con la consulta en base de datos
+            </summary>
+            <param name="query"></param>
+            <param name="fieldEquivalents">usuario=username,nombre=name</param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.CORE.Globals.Queries.GeneraCountSql(System.String,System.String,System.String)">
+            <summary>
+            Genera la consulta para el count de los elementos devueltos para poder paginar correctamente
+            </summary>
+            <param name="sql"></param>
+            <param name="query"></param>
+            <param name="fieldEquivalents"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.CORE.Globals.Queries.GeneraSql(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Genera la consulta que se enviará a la base de datos después de aplicarle las correcciones necesarias
+            </summary>
+            <param name="sql"></param>
+            <param name="query"></param>
+            <param name="sort"></param>
+            <param name="limit"></param>
+            <param name="offset"></param>
+            <param name="fieldEquivalents"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.CORE.Globals.Model.IsValid(System.Object)">
+            <summary>
+            Verifica que los datos del modelo es válido
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.CORE.Globals.Model.ValidationResults(System.Collections.Generic.List{System.ComponentModel.DataAnnotations.ValidationResult})">
+            <summary>
+            Devuelve los errores de validación del modelo
+            </summary>
+            <param name="results"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.CORE.Globals.Model.ManageException(System.Data.Entity.DbContextTransaction,System.Data.Entity.Validation.DbEntityValidationException)">
+            <summary>
+            Maneja la transacción en curso cuando hay problemas de validación en la entidad
+            </summary>
+            <param name="transaction"></param>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SECURITY.MODEL.Interfaces.IAudiences">
+            <summary>
+            Define el Interface para la gestión de Categorias
+            </summary>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IAudiences.Get(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Devuelve <see cref="T:System.Collections.Generic.List`1"/> que coincidan con la query.
+            </summary>
+            <param name="query">campo eq:'string' or campo eq:numero and campo ct:'*contiene*' or campo ct:'comienza*' or campo eq!'diferente'</param>
+            <param name="sort">campo1 asc, campo2 desc, campo3 asc</param>
+            <param name="limit">Limita el número de filas devueltas</param>
+            <param name="offset">Página</param>
+            <param name="filter">Filtro predeterminado de la consulta</param>
+            <returns><see cref="T:System.Collections.Generic.List`1"/></returns>
+            <remarks>Está preparada para paginación</remarks>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IAudiences.Get(System.Guid)">
+            <summary>
+            Devuelve <see cref="T:SECURITY.MODEL.Entities.Audience"/> cuyo internalId coincida
+            </summary>
+            <param name="internalId">Key</param>
+            <returns><see cref="T:SECURITY.MODEL.Entities.Audience"/></returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IAudiences.Post(SECURITY.MODEL.Entities.Audience)">
+            <summary>
+            Crea un <see cref="T:SECURITY.MODEL.Entities.Audience"/>
+            </summary>
+            <param name="model"><see cref="T:System.Collections.Generic.List`1"/></param>
+            <returns><see cref="T:SECURITY.MODEL.Entities.Audience"/></returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IAudiences.Put(SECURITY.MODEL.Entities.Audience)">
+            <summary>
+            Actualiza un <see cref="T:SECURITY.MODEL.Entities.Audience"/>
+            </summary>
+            <param name="model"></param>
+            <returns><see cref="T:System.Collections.Generic.List`1"/></returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IAudiences.Delete(System.Guid)">
+            <summary>
+            Elimina una <see cref="T:SECURITY.MODEL.Entities.Audience"/>
+            </summary>
+            <param name="internalId"></param>
+            <returns><see cref="T:System.Collections.Generic.List`1"/></returns>
+        </member>
+        <member name="T:SECURITY.MODEL.Interfaces.IBase">
+            <summary>
+            Define el Interface para la gestión de Areas
+            </summary>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IBase.Count">
+            <summary>
+            Devuelve el recuento de la consulta para realizar las paginaciones
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SECURITY.MODEL.Interfaces.IRoles">
+            <summary>
+            Define el Interface para la gestión de Roles
+            </summary>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IRoles.Get(System.Guid)">
+            <summary>
+            Devuelve <see cref="T:SECURITY.MODEL.Entities.Role"/> cuyo internalId coincida
+            </summary>
+            <param name="internalId">Key</param>
+            <returns>{User}</returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IRoles.Get(System.String)">
+            <summary>
+            Devuelve <see cref="T:SECURITY.MODEL.Entities.Role"/> cuyo nombre coincida
+            </summary>
+            <param name="role">Key</param>
+            <returns>{User}</returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IRoles.Post(SECURITY.MODEL.Entities.Role)">
+            <summary>
+            Crea un <see cref="T:SECURITY.MODEL.Entities.Role"/>
+            </summary>
+            <param name="model">{User}</param>
+            <returns>{User}</returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IRoles.Put(SECURITY.MODEL.Entities.Role)">
+            <summary>
+            Actualiza un <see cref="T:SECURITY.MODEL.Entities.Role"/>
+            </summary>
+            <param name="model"></param>
+            <returns>{User}</returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IRoles.Delete(System.Guid)">
+            <summary>
+            Elimina una <see cref="T:SECURITY.MODEL.Entities.Role"/>
+            </summary>
+            <param name="internalId"></param>
+            <returns>{User}</returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IRoles.GetUsersInRole(System.String)">
+            <summary>
+            Devuelve a todos los usuarios del rol
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IRoles.IsInRole(System.String,System.String)">
+            <summary>
+            Devuelve true si el usuario pertenece al rol
+            </summary>
+            <param name="userName"></param>
+            <param name="roleName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SECURITY.MODEL.Interfaces.IStartups">
+            <summary>
+            Define el Interface para la gestión de Startups
+            </summary>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IStartups.Init">
+            <summary>
+            Creará los roles y usuarios de las configuraciones startup del web.config
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SECURITY.MODEL.Interfaces.IUsers">
+            <summary>
+            Define el Interface para la gestión de Usuarios
+            </summary>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IUsers.Get(System.Guid)">
+            <summary>
+            Devuelve <see cref="P:SECURITY.MODEL.Interfaces.IUsers.User"/> cuyo internalId coincida
+            </summary>
+            <param name="internalId">Key</param>
+            <returns>{User}</returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IUsers.Post(SECURITY.MODEL.Entities.User,System.String)">
+            <summary>
+            Crea un <see cref="P:SECURITY.MODEL.Interfaces.IUsers.User"/>
+            </summary>
+            <param name="model">{User}</param>
+            <returns>{User}</returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IUsers.Put(SECURITY.MODEL.Entities.User)">
+            <summary>
+            Actualiza un <see cref="P:SECURITY.MODEL.Interfaces.IUsers.User"/>
+            </summary>
+            <param name="model"></param>
+            <returns>{User}</returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IUsers.Delete(System.Guid)">
+            <summary>
+            Elimina una <see cref="P:SECURITY.MODEL.Interfaces.IUsers.User"/>
+            </summary>
+            <param name="internalId"></param>
+            <returns>{User}</returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IUsers.IsInRole(System.String,System.String)">
+            <summary>
+            Devuelve true si el usuario contiene el rol
+            </summary>
+            <param name="userName">NombreUsuario</param>
+            <param name="role">Rol1</param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IUsers.GetRoles(System.String)">
+            <summary>
+            Devuelve los roles del usuario
+            </summary>
+            <param name="userName">NombreUsuario</param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IUsers.AddToRole(System.String,System.String)">
+            <summary>
+            Añade al usuario al rol
+            </summary>
+            <param name="userName">NombreUsuario</param>
+            <param name="role">Rol1</param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IUsers.AddToRoles(System.String,System.String)">
+            <summary>
+            Añade al usuario a la lista de roles separados por comas
+            </summary>
+            <param name="userName">NombreUsuario</param>
+            <param name="roles">Rol1,Rol2,Rol3</param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IUsers.RemoveFromRole(System.String,System.String)">
+            <summary>
+            Quita al usuario del rol
+            </summary>
+            <param name="userName">NombreUsuario</param>
+            <param name="role">Rol1</param>
+            <returns></returns>
+        </member>
+        <member name="M:SECURITY.MODEL.Interfaces.IUsers.RemoveFromRoles(System.String,System.String)">
+            <summary>
+            Quita al usuario del rol
+            </summary>
+            <param name="userName">NombreUsuario</param>
+            <param name="roles">Rol1,Rol2,Rol3</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
